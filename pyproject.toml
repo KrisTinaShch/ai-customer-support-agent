@@ -1,0 +1,6 @@
+[project]
+name = "studio-concierge-ai"
+version = "0.1.0"
+description = "Bilingual RAG and agentic assistant for S-Fusion photo studio."
+requires-python = ">=3.12,<3.13"
+dependencies = []
