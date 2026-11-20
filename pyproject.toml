@@ -4,7 +4,11 @@ name = "ai-customer-support-agent"
 description = "AI customer support agent for an e-commerce store with RAG, tool calling, and human approval for sensitive actions."
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "alembic>=1.20.1",
+    "asyncpg>=0.32.0",
     "fastapi>=0.162.5",
+    "pydantic-settings>=2.16.3",
+    "sqlalchemy[asyncio]>=2.1.9",
     "uvicorn[standard]>=0.54.0",
 ]
 
