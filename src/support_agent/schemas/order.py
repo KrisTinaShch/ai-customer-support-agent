@@ -15,3 +15,7 @@ class OrderResponse(BaseModel):
     order_number: str
     status: OrderStatus
     can_be_canceled: bool
+
+
+class OrderCancellationRequest(BaseModel):
+    confirmed: bool
