@@ -1,6 +1,10 @@
+import ProductCard from './components/ProductCard.jsx'
+import { products } from './data/products.js'
 import './App.css'
 
 function App() {
+  const language = 'en'
+
   return (
     <div className="app">
       <header className="site-header">
@@ -31,6 +35,31 @@ function App() {
           <a className="primary-link" href="#products">
             Shop the collection
           </a>
+        </section>
+
+        <section
+          className="products-section"
+          id="products"
+          aria-labelledby="products-title"
+        >
+          <div className="section-heading">
+            <p className="eyebrow">Selected gear</p>
+            <h2 id="products-title">Built for the studio and the road.</h2>
+            <p>
+              Reliable essentials for lighting, shooting, and protecting your
+              work.
+            </p>
+          </div>
+
+          <div className="product-grid">
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                language={language}
+              />
+            ))}
+          </div>
         </section>
       </main>
     </div>

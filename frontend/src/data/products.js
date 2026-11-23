@@ -1,3 +1,9 @@
+import lightKitImage from '../assets/products/light-kit.jpg'
+import backgroundSetImage from '../assets/products/background-set.jpg'
+import tripodImage from '../assets/products/tripod.jpg'
+import reflectorImage from '../assets/products/reflector.jpg'
+import memoryCardImage from '../assets/products/memory-card.jpg'
+
 export const products = [
   {
     id: 'luma-pro-light-kit',
@@ -15,6 +21,7 @@ export const products = [
     },
     price: 1599,
     currency: 'EUR',
+    image: lightKitImage,
   },
   {
     id: 'seamless-background-set',
@@ -32,6 +39,7 @@ export const products = [
     },
     price: 249,
     currency: 'EUR',
+    image: backgroundSetImage,
   },
   {
     id: 'carbon-travel-tripod',
@@ -49,6 +57,7 @@ export const products = [
     },
     price: 310,
     currency: 'EUR',
+    image: tripodImage,
   },
   {
     id: 'collapsible-reflector',
@@ -66,6 +75,7 @@ export const products = [
     },
     price: 79.5,
     currency: 'EUR',
+    image: reflectorImage,
   },
   {
     id: 'memory-card-128',
@@ -83,5 +93,6 @@ export const products = [
     },
     price: 89.9,
     currency: 'EUR',
+    image: memoryCardImage,
   },
 ]
