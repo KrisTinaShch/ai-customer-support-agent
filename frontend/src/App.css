@@ -45,7 +45,25 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
+.language-toggle {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    background 150ms ease;
+}
 
+.language-toggle:hover {
+  color: #ffffff;
+  background: var(--color-primary);
+}
 main {
   padding: 0 20px 32px;
 }
@@ -131,7 +149,8 @@ main {
 
 .primary-link:focus-visible,
 .main-navigation a:focus-visible,
-.brand:focus-visible {
+.brand:focus-visible,
+.language-toggle:focus-visible {
   outline: 3px solid var(--color-accent);
   outline-offset: 4px;
 }

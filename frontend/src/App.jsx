@@ -1,9 +1,16 @@
+import { useState } from 'react'
 import ProductCard from './components/ProductCard.jsx'
 import { products } from './data/products.js'
+import { translations } from './data/translations.js'
 import './App.css'
 
 function App() {
-  const language = 'en'
+  const [language, setLanguage] = useState('en')
+  const text = translations[language]
+
+  const handleLanguageChange = () => {
+    setLanguage((currentLanguage) => (currentLanguage === 'en' ? 'bg' : 'en'))
+  }
 
   return (
     <div className="app">
@@ -12,28 +19,32 @@ function App() {
           Luma Store
         </a>
 
-        <nav className="main-navigation" aria-label="Main navigation">
-          <a href="#products">Products</a>
-          <a href="#policies">Policies</a>
-          <a href="#order">Track order</a>
+        <nav className="main-navigation" aria-label={text.navigation.label}>
+          <a href="#products">{text.navigation.products}</a>
+          <a href="#policies">{text.navigation.policies}</a>
+          <a href="#order">{text.navigation.trackOrder}</a>
         </nav>
-
-        <span className="demo-badge">Demo store</span>
+        <span className="demo-badge">{text.demoStore}</span>
+        <button
+          className="language-toggle"
+          type="button"
+          onClick={handleLanguageChange}
+          aria-label={text.switchLanguage}
+        >
+          {language === 'en' ? 'BG' : 'EN'}
+        </button>
       </header>
 
       <main id="top">
         <section className="hero-section" aria-labelledby="hero-title">
-          <p className="eyebrow">Photography essentials</p>
+          <p className="eyebrow">{text.hero.eyebrow}</p>
 
-          <h1 id="hero-title">Tools for every frame.</h1>
+          <h1 id="hero-title">{text.hero.title}</h1>
 
-          <p className="hero-description">
-            Studio lighting, backgrounds, and accessories for photographers who
-            care about every detail.
-          </p>
+          <p className="hero-description">{text.hero.description}</p>
 
           <a className="primary-link" href="#products">
-            Shop the collection
+            {text.hero.action}
           </a>
         </section>
 
@@ -43,12 +54,9 @@ function App() {
           aria-labelledby="products-title"
         >
           <div className="section-heading">
-            <p className="eyebrow">Selected gear</p>
-            <h2 id="products-title">Built for the studio and the road.</h2>
-            <p>
-              Reliable essentials for lighting, shooting, and protecting your
-              work.
-            </p>
+            <p className="eyebrow">{text.catalog.eyebrow}</p>
+            <h2 id="products-title">{text.catalog.title}</h2>
+            <p>{text.catalog.description}</p>
           </div>
 
           <div className="product-grid">
