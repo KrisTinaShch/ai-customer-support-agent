@@ -42,7 +42,7 @@ def test_cancel_order_rejects_shipped_order(
         customer_email="nikolay.demo@example.com",
         status=OrderStatus.SHIPPED,
         total_amount=Decimal("1599.00"),
-        currency="BGN",
+        currency="EUR",
     )
     find_order = AsyncMock(return_value=order)
     session = AsyncMock(spec=AsyncSession)
@@ -78,7 +78,7 @@ def test_cancel_order_changes_status_and_commits(
         customer_email="maria.demo@example.com",
         status=OrderStatus.PENDING,
         total_amount=Decimal("89.90"),
-        currency="BGN",
+        currency="EUR",
     )
     find_order = AsyncMock(return_value=order)
     session = AsyncMock(spec=AsyncSession)
