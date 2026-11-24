@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import ProductCard from './components/ProductCard.jsx'
+import PolicyCard from './components/PolicyCard.jsx'
 import { products } from './data/products.js'
+import { policies } from './data/policies.js'
 import { translations } from './data/translations.js'
 import './App.css'
 
@@ -66,6 +68,23 @@ function App() {
                 product={product}
                 language={language}
               />
+            ))}
+          </div>
+        </section>
+        <section
+          className="policies-section"
+          id="policies"
+          aria-labelledby="policies-title"
+        >
+          <div className="section-heading">
+            <p className="eyebrow">{text.policiesSection.eyebrow}</p>
+            <h2 id="policies-title">{text.policiesSection.title}</h2>
+            <p>{text.policiesSection.description}</p>
+          </div>
+
+          <div className="policy-grid">
+            {policies.map((policy) => (
+              <PolicyCard key={policy.id} policy={policy} language={language} />
             ))}
           </div>
         </section>

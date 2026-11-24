@@ -21,6 +21,12 @@ export const translations = {
       description:
         'Reliable essentials for lighting, shooting, and protecting your work.',
     },
+    policiesSection: {
+      eyebrow: 'Store policies',
+      title: 'Clear rules before you order.',
+      description:
+        'A short overview of shipping, returns, and order cancellation.',
+    },
   },
 
   bg: {
@@ -44,6 +50,12 @@ export const translations = {
       title: 'Създадено за студиото и за снимки на път.',
       description:
         'Надеждно оборудване за осветление, снимане и защита на вашата работа.',
+    },
+    policiesSection: {
+      eyebrow: 'Условия на магазина',
+      title: 'Ясни правила преди поръчка.',
+      description:
+        'Кратък преглед на доставката, връщането и отмяната на поръчка.',
     },
   },
 }
