@@ -1,11 +1,15 @@
 import { useState } from 'react'
-import { getOrder } from '../api/orders.js'
+import { cancelOrder, getOrder } from '../api/orders.js'
 
 function OrderLookup({ text }) {
   const [orderNumber, setOrderNumber] = useState('')
   const [order, setOrder] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [errorCode, setErrorCode] = useState(null)
+  const [isConfirmingCancellation, setIsConfirmingCancellation] =
+    useState(false)
+  const [isCanceling, setIsCanceling] = useState(false)
+  const [wasCanceled, setWasCanceled] = useState(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -13,6 +17,9 @@ function OrderLookup({ text }) {
     setIsLoading(true)
     setOrder(null)
     setErrorCode(null)
+    setIsConfirmingCancellation(false)
+    setIsCanceling(false)
+    setWasCanceled(false)
 
     try {
       const foundOrder = await getOrder(orderNumber)
@@ -28,7 +35,35 @@ function OrderLookup({ text }) {
       setIsLoading(false)
     }
   }
+  const handleCancelOrder = async () => {
+    setIsCanceling(true)
+    setErrorCode(null)
+    setWasCanceled(false)
 
+    try {
+      const canceledOrder = await cancelOrder(order.order_number, true)
+
+      setOrder(canceledOrder)
+      setIsConfirmingCancellation(false)
+      setWasCanceled(true)
+    } catch (error) {
+      const knownErrorCodes = [
+        'CONFIRMATION_REQUIRED',
+        'ORDER_NOT_FOUND',
+        'CANCELLATION_NOT_ALLOWED',
+        'CANCELLATION_REQUEST_FAILED',
+      ]
+
+      const nextErrorCode =
+        error instanceof Error && knownErrorCodes.includes(error.message)
+          ? error.message
+          : 'CANCELLATION_REQUEST_FAILED'
+
+      setErrorCode(nextErrorCode)
+    } finally {
+      setIsCanceling(false)
+    }
+  }
   return (
     <section className="order-section" id="order" aria-labelledby="order-title">
       <div className="section-heading">
@@ -82,6 +117,42 @@ function OrderLookup({ text }) {
             >
               {order.can_be_canceled ? text.canCancel : text.cannotCancel}
             </p>
+
+            {order.can_be_canceled && !isConfirmingCancellation && (
+              <button
+                type="button"
+                className="cancel-action"
+                onClick={() => setIsConfirmingCancellation(true)}
+              >
+                {text.cancelAction}
+              </button>
+            )}
+
+            {order.can_be_canceled && isConfirmingCancellation && (
+              <div className="cancel-confirmation">
+                <p>{text.cancelQuestion}</p>
+
+                <div className="confirmation-actions">
+                  <button
+                    type="button"
+                    onClick={() => setIsConfirmingCancellation(false)}
+                  >
+                    {text.keepOrder}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleCancelOrder}
+                    disabled={isCanceling}
+                  >
+                    {isCanceling ? text.canceling : text.confirmCancel}
+                  </button>
+                </div>
+              </div>
+            )}
+            {wasCanceled && (
+              <p className="order-success">{text.canceledSuccess}</p>
+            )}
           </div>
         )}
       </form>
