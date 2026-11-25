@@ -1,4 +1,8 @@
+from pathlib import Path
+
 import yaml
+
+from support_agent.rag.schemas import KnowledgeDocument
 
 FRONT_MATTER_DELIMITER = "---"
 
@@ -35,3 +39,14 @@ def parse_markdown_document(
         raise InvalidKnowledgeDocumentError("Document content cannot be empty.")
 
     return metadata, content
+
+
+def load_markdown_document(path: Path) -> KnowledgeDocument:
+    raw_text = path.read_text(encoding="utf-8")
+
+    metadata, content = parse_markdown_document(raw_text)
+
+    if "version" in metadata:
+        metadata["version"] = str(metadata["version"])
+
+    return KnowledgeDocument(**metadata, content=content, source_path=path)
