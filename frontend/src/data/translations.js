@@ -42,6 +42,12 @@ export const translations = {
       status: 'Status',
       canCancel: 'This order can be canceled.',
       cannotCancel: 'This order can no longer be canceled.',
+      cancelAction: 'Cancel order',
+      cancelQuestion: 'Are you sure you want to cancel this order?',
+      confirmCancel: 'Yes, cancel order',
+      keepOrder: 'Keep order',
+      canceling: 'Canceling order...',
+      canceledSuccess: 'The order was canceled successfully.',
       statuses: {
         pending: 'Pending',
         processing: 'Processing',
@@ -53,6 +59,10 @@ export const translations = {
         ORDER_NOT_FOUND: 'Order not found.',
         ORDER_REQUEST_FAILED:
           'Could not connect to the server. Please try again.',
+        CONFIRMATION_REQUIRED: 'Cancellation requires confirmation.',
+        CANCELLATION_NOT_ALLOWED: 'This order can no longer be canceled.',
+        CANCELLATION_REQUEST_FAILED:
+          'Could not cancel the order. Please try again.',
       },
     },
   },
@@ -99,6 +109,12 @@ export const translations = {
       orderNumber: 'Поръчка',
       status: 'Статус',
       canCancel: 'Тази поръчка може да бъде отменена.',
+      cancelAction: 'Отмени поръчката',
+      cancelQuestion: 'Сигурни ли сте, че искате да отмените тази поръчка?',
+      confirmCancel: 'Да, отмени поръчката',
+      keepOrder: 'Запази поръчката',
+      canceling: 'Отменяме поръчката...',
+      canceledSuccess: 'Поръчката беше отменена успешно.',
       cannotCancel: 'Тази поръчка вече не може да бъде отменена.',
       statuses: {
         pending: 'Чакаща',
@@ -110,6 +126,10 @@ export const translations = {
       errors: {
         ORDER_NOT_FOUND: 'Поръчката не е намерена.',
         ORDER_REQUEST_FAILED: 'Неуспешна връзка със сървъра. Опитайте отново.',
+        CONFIRMATION_REQUIRED: 'Отмяната изисква потвърждение.',
+        CANCELLATION_NOT_ALLOWED: 'Тази поръчка вече не може да бъде отменена.',
+        CANCELLATION_REQUEST_FAILED:
+          'Поръчката не можа да бъде отменена. Опитайте отново.',
       },
     },
   },
