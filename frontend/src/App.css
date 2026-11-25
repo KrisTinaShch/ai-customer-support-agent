@@ -399,3 +399,137 @@ main {
     min-height: auto;
   }
 }
+
+.order-section {
+  display: grid;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 120px 0 80px;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  align-items: start;
+  gap: 64px;
+}
+
+.order-section .section-heading {
+  margin-bottom: 0;
+}
+
+.order-form {
+  display: grid;
+  padding: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  background: var(--color-surface);
+  box-shadow: 0 20px 50px rgba(29, 41, 39, 0.08);
+  gap: 16px;
+}
+
+.order-form label {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.order-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  color: var(--color-text);
+  background: #ffffff;
+  font: inherit;
+}
+
+.order-form input:focus {
+  border-color: var(--color-primary);
+  outline: 3px solid rgba(31, 92, 85, 0.16);
+}
+
+.order-form button {
+  padding: 14px 20px;
+  border: 0;
+  border-radius: 12px;
+  color: #ffffff;
+  background: var(--color-primary);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+.order-form button:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.order-form button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.order-hint {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+  .order-section {
+    padding-top: 80px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+.order-form button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+.order-error {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: #8b2f2f;
+  background: #fbe8e6;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.order-result {
+  margin-top: 8px;
+  padding: 20px;
+  border: 1px solid rgba(31, 92, 85, 0.2);
+  border-radius: 16px;
+  background: rgba(31, 92, 85, 0.06);
+}
+
+.order-result h3 {
+  margin: 0 0 16px;
+  color: var(--color-text);
+  font-size: 1.25rem;
+}
+
+.order-result p {
+  margin: 8px 0 0;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.order-result strong {
+  color: var(--color-text);
+}
+
+.order-availability {
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+  font-weight: 700;
+}
+
+.order-availability.is-available {
+  color: var(--color-primary);
+}
+
+.order-availability.is-unavailable {
+  color: #9a4f2d;
+}

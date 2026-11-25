@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import OrderLookup from './components/OrderLookup.jsx'
 import ProductCard from './components/ProductCard.jsx'
 import PolicyCard from './components/PolicyCard.jsx'
 import { products } from './data/products.js'
@@ -88,6 +89,7 @@ function App() {
             ))}
           </div>
         </section>
+        <OrderLookup text={text.orderLookup} />
       </main>
     </div>
   )
