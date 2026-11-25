@@ -533,3 +533,66 @@ main {
 .order-availability.is-unavailable {
   color: #9a4f2d;
 }
+.order-form .cancel-action {
+  width: 100%;
+  margin-top: 16px;
+  background: #9a4f2d;
+}
+
+.order-form .cancel-action:hover {
+  background: #7f3f24;
+}
+
+.cancel-confirmation {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid rgba(154, 79, 45, 0.25);
+  border-radius: 12px;
+  background: #fff8f3;
+}
+
+.order-result .cancel-confirmation > p {
+  margin: 0;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.confirmation-actions {
+  display: grid;
+  margin-top: 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.order-form .confirmation-actions button:first-child {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  background: #ffffff;
+}
+
+.order-form .confirmation-actions button:first-child:hover {
+  background: #f3efe7;
+}
+
+.order-form .confirmation-actions button:last-child {
+  background: #9a4f2d;
+}
+
+.order-form .confirmation-actions button:last-child:hover {
+  background: #7f3f24;
+}
+
+.order-result .order-success {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: var(--color-primary);
+  background: #e4f0ec;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .confirmation-actions {
+    grid-template-columns: 1fr;
+  }
+}
