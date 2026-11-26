@@ -5,6 +5,7 @@ import pytest
 
 from support_agent.rag.loaders import (
     InvalidKnowledgeDocumentError,
+    load_knowledge_base,
     load_markdown_document,
     parse_markdown_document,
 )
@@ -75,3 +76,15 @@ def test_parse_markdown_document_rejects_invalid_input(
         match=expected_message,
     ):
         parse_markdown_document(raw_text)
+
+
+def test_load_project_knowledge_base() -> None:
+    documents = load_knowledge_base(Path("knowledge_base"))
+
+    documents_by_id = {document.document_id: document for document in documents}
+
+    assert "returns-policy-en" in documents_by_id
+    assert "returns-policy-bg" in documents_by_id
+
+    assert documents_by_id["returns-policy-en"].language is DocumentLanguage.ENGLISH
+    assert documents_by_id["returns-policy-bg"].language is DocumentLanguage.BULGARIAN

@@ -50,3 +50,11 @@ def load_markdown_document(path: Path) -> KnowledgeDocument:
         metadata["version"] = str(metadata["version"])
 
     return KnowledgeDocument(**metadata, content=content, source_path=path)
+
+
+def load_knowledge_base(root_path: Path) -> list[KnowledgeDocument]:
+    if not root_path.is_dir():
+        raise FileNotFoundError(f"Knowledge base directory does not exist: {root_path}")
+    document_paths = sorted(root_path.rglob("*.md"))
+
+    return [load_markdown_document(path) for path in document_paths]
