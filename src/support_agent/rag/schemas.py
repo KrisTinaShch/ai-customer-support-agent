@@ -29,3 +29,18 @@ class KnowledgeDocument(BaseModel):
     updated_at: date
     content: str = Field(min_length=1)
     source_path: Path
+
+
+class KnowledgeChunk(BaseModel):
+    chunk_id: str
+    document_id: str
+    source_id: str
+    language: DocumentLanguage
+    category: DocumentCategory
+    document_title: str
+    section_title: str | None = None
+    chunk_index: int = Field(ge=0)
+    version: str
+    updated_at: date
+    content: str = Field(min_length=1)
+    source_path: Path
